@@ -6,12 +6,14 @@ yearEl.textContent = currentYear;
 // Toggle menu
 const headerEl = document.querySelector(".header");
 const btnNavEl = document.querySelector(".btn-mobile-nav");
+
 btnNavEl.addEventListener("click", () => {
   headerEl.classList.toggle("nav-open");
 });
 
 // Smooth scroll
 const allLinks = document.querySelectorAll("a:link");
+
 allLinks.forEach((link) => {
   link.addEventListener("click", (e) => {
     e.preventDefault();
@@ -40,3 +42,23 @@ allLinks.forEach((link) => {
     }
   });
 });
+
+// Sticky navigation
+
+const sectionHeroEl = document.querySelector(".section-hero");
+
+const obs = new IntersectionObserver(
+  (entries) => {
+    const ent = entries[0];
+
+    if (!ent.isIntersecting) document.body.classList.add("sticky");
+    else document.body.classList.remove("sticky");
+  },
+  {
+    root: null,
+    threshold: 0,
+    rootMargin: "-80px",
+  }
+);
+
+obs.observe(sectionHeroEl);
