@@ -11,7 +11,6 @@ btnNavEl.addEventListener("click", () => {
 });
 
 // Smooth scroll
-
 const allLinks = document.querySelectorAll("a:link");
 allLinks.forEach((link) => {
   link.addEventListener("click", (e) => {
@@ -33,7 +32,10 @@ allLinks.forEach((link) => {
     }
 
     // Close mobile nav menu
-    if (link.classList.contains("main-nav-link")) {
+    if (
+      link.classList.contains("main-nav-link") &&
+      headerEl.classList.contains("nav-open")
+    ) {
       headerEl.classList.remove("nav-open");
     }
   });
